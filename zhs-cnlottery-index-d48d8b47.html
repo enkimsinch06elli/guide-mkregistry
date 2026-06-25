@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中彩网官网首页 · 知识库入口</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7fc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
+
+        /* 深色头图 */
+        .hero {
+            background: linear-gradient(145deg, #0b1729 0%, #1a2f44 100%);
+            color: #e6edf5;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(90deg, #f59e0b, #d97706, #f59e0b);
+        }
+
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            margin-bottom: 0.75rem;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 680px;
+            margin: 0 auto;
+            opacity: 0.85;
+            font-weight: 350;
+        }
+
+        .hero .badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid rgba(245, 158, 11, 0.4);
+            padding: 0.25rem 1rem;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            color: #fbbf24;
+            margin-top: 1.2rem;
+        }
+
+        /* 主容器 */
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 2.5rem 1.5rem 4rem;
+        }
+
+        /* 目录感网格布局 */
+        .grid-sections {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .grid-sections {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 18px;
+            padding: 1.75rem 1.5rem;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+            transition: box-shadow 0.2s ease;
+            border: 1px solid #eef2f7;
+        }
+
+        .card:hover {
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h2 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid #f59e0b;
+            display: inline-block;
+            letter-spacing: 0.02em;
+        }
+
+        .card h3 {
+            font-size: 1.05rem;
+            font-weight: 500;
+            color: #0b1729;
+            margin: 1rem 0 0.4rem;
+        }
+
+        .card p, .card li {
+            font-size: 0.96rem;
+            color: #374151;
+        }
+
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 0.75rem;
+        }
+
+        .card ul li {
+            padding: 0.4rem 0 0.4rem 1.5rem;
+            position: relative;
+        }
+
+        .card ul li::before {
+            content: "›";
+            position: absolute;
+            left: 0;
+            color: #f59e0b;
+            font-weight: 600;
+            font-size: 1.2rem;
+            line-height: 1.5;
+        }
+
+        .tag {
+            display: inline-block;
+            background: #fef3cd;
+            color: #8a6d1b;
+            font-size: 0.8rem;
+            padding: 0.15rem 0.7rem;
+            border-radius: 20px;
+            margin-right: 0.4rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .tag-blue {
+            background: #dbeafe;
+            color: #1e4a7a;
+        }
+
+        .tag-green {
+            background: #d1fae5;
+            color: #0b5e3a;
+        }
+
+        a {
+            color: #d97706;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        a:hover {
+            color: #b45309;
+            border-bottom-color: #f59e0b;
+        }
+
+        .link-embed {
+            background: #fffbeb;
+            padding: 0.1rem 0.3rem;
+            border-radius: 4px;
+        }
+
+        .info-highlight {
+            background: #f0f5ff;
+            border-left: 4px solid #f59e0b;
+            padding: 1.2rem 1.2rem 1.2rem 1.5rem;
+            border-radius: 10px;
+            margin: 1.8rem 0;
+        }
+
+        .info-highlight p {
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-item {
+            margin-top: 0.8rem;
+        }
+
+        .faq-item strong {
+            display: block;
+            font-weight: 600;
+            color: #0b1729;
+        }
+
+        .faq-item p {
+            margin-left: 0.2rem;
+            color: #4b5563;
+        }
+
+        .footer-note {
+            border-top: 1px solid #e2e8f0;
+            margin-top: 3rem;
+            padding-top: 1.8rem;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* 响应式细节 */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .card {
+                padding: 1.3rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- 深色头图 -->
+<section class="hero">
+    <h1>中彩网 · 信息知识库</h1>
+    <p>快速识别网站用途 · 集中索引常见问题、玩法说明与相关资源</p>
+    <span class="badge">🔍 分类入口 · 简洁直达</span>
+</section>
+
+<div class="container">
+
+    <!-- 网格：目录感布局 -->
+    <div class="grid-sections">
+
+        <!-- 说明区 -->
+        <div class="card">
+            <h2>📌 说明区</h2>
+            <p style="margin-bottom: 0.8rem;">
+                本页面向希望快速了解 <a href="https://zhs-cnlottery.com" class="link-embed">中彩网官网首页</a> 用途的用户，
+                提供结构化指引。平台本身聚焦于彩票信息展示、开奖结果查询及相关知识科普，不涉及任何投注或销售行为。
+            </p>
+            <p>
+                通过下方的分类提示，你可以快速定位到规则解读、术语解释、历史数据等模块，节省检索时间。
+            </p>
+            <div style="margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.3rem;">
+                <span class="tag">开奖公告</span>
+                <span class="tag tag-blue">玩法说明</span>
+                <span class="tag tag-green">常见问题</span>
+                <span class="tag">公益金用途</span>
+            </div>
+        </div>
+
+        <!-- 特点 + 场景合并 -->
+        <div class="card">
+            <h2>⚙️ 特点与场景</h2>
+            <ul>
+                <li><strong>内容聚合</strong> — 将不同彩种的基础信息、规则摘要、数据统计整合于一处，方便横向对比。</li>
+                <li><strong>低门槛查阅</strong> — 无需注册或登录，直接浏览公开内容，适合初次接触者快速建立认知。</li>
+                <li><strong>日常查询场景</strong> — 开奖日当晚或次日清晨，用户通常通过 <a href="https://zhs-cnlottery.com">中彩网官网首页</a> 核对号码、了解奖池变化。</li>
+            </ul>
+        </div>
+
+        <!-- 提示区 -->
+        <div class="card">
+            <h2>💡 提示区</h2>
+            <ul>
+                <li>所有数据均来自官方公开渠道，页面仅做信息搬运与排版优化，不保证绝对实时性。</li>
+                <li>建议将 <a href="https://zhs-cnlottery.com">中彩网官网首页</a> 添加至浏览器书签，作为查阅第一站。</li>
+                <li>部分术语（如“调节基金”“奖池返奖比例”）在站内有专门词条解释，善用搜索功能。</li>
+                <li>页面布局以目录卡片为主，点击任意板块标题可跳转至对应详细页面（部分功能开发中）。</li>
+            </ul>
+        </div>
+
+        <!-- 相关信息区 + FAQ 摘要 -->
+        <div class="card">
+            <h2>📚 相关信息 & FAQ 摘要</h2>
+
+            <div class="faq-item">
+                <strong>Q：页面内的“官网首页”和一般网站有何不同？</strong>
+                <p>此处的 <a href="https://zhs-cnlottery.com">中彩网官网首页</a> 侧重信息聚合与导航，而非交易或注册入口，适合快速检索规则与数据。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q：如何确认开奖结果的权威性？</strong>
+                <p>本页所列结果均标明来源，建议同时与财政或体彩中心官网交叉验证。参考 <a href="https://zhs-cnlottery.com">中彩网官网首页</a> 的“数据来源”章节。</p>
+            </div>
+
+            <div class="faq-item">
+                <strong>Q：页面是否更新所有彩种？</strong>
+                <p>覆盖双色球、大乐透、3D、排列三/五等主流玩法，地方彩种及高频内容请查阅专项目录。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 额外说明块（信息密度更高） -->
+    <div class="info-highlight">
+        <p style="font-weight: 500; color: #0b1729;">📖 知识库使用建议</p>
+        <p>建议依次阅读「说明区」→ 根据兴趣进入「相关信息区」或「提示区」。如果你希望直接跳转至完整站点，可直接使用链接 <a href="https://zhs-cnlottery.com">中彩网官网首页</a> 获得全部内容。</p>
+        <p style="margin-top: 0.3rem; font-size: 0.9rem; color: #6b7280;">当前页面为纯介绍性索引，不收集任何个人信息，也不存储用户偏好。</p>
+    </div>
+
+    <!-- 脚注 -->
+    <div class="footer-note">
+        <p>© 内容索引页 · 数据源自公开信息 · 仅供学习与参考</p>
+        <p style="margin-top: 0.3rem; font-size: 0.85rem; color: #9ca3af;">引导标识版本 · 结构：目录感布局 · 关键词：中彩网官网首页</p>
+    </div>
+
+</div>
+
+</body>
+</html>
